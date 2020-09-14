@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2E8BC0</color>
+    <color name="colorPrimaryDark">#0C2D48</color>
+    <color name="colorAccent">#B1D4E0</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="webimageview_default_placeholder">#AAA</color>
+    <color name="webimageview_default_error_placeholder">#AAA</color>
+
+</resources>

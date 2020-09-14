@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.achmadfuad.searchuser"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    bundle {
+        language { enableSplit = true }
+        density { enableSplit = true }
+        abi { enableSplit = true }
+    }
+    lintOptions {
+        abortOnError false
+        ignoreWarnings true
+        quiet true
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation kotlinDependencies.values()
+    implementation androidSupportDependencies.values()
+    implementation coroutineDependencies.values()
+    implementation koinDependencies.values()
+    implementation okHttpDependencies.values()
+    implementation retrofitDependencies.values()
+    implementation glideDependencies.values()
+
+    debugImplementation ganderDebugDependencies.values()
+    releaseImplementation ganderReleaseDependencies.values()
+
+    testImplementation testDependencies.values()
+    androidTestImplementation testImplementationDependencies.values()
+
+}

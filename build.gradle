@@ -1,0 +1,94 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.3.72"
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    kotlin_version = "1.3.71"
+    appcompat_version = "1.1.0"
+    constraint_version = "1.1.0"
+    ktx_version = "1.3.1"
+    coroutine_version = "1.3.4"
+    okhttp_version = "3.12.1"
+    retrofit_version = "2.6.2"
+    koin_version = "2.0.1"
+    glide_version = "4.11.0"
+    paging_version = "1.0.0"
+    gander_version = "3.1.0"
+
+    kotlinDependencies = [
+            kotlin                : "androidx.core:core-ktx:$ktx_version",
+            kotlinStdLib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            kotlinStdLibJre8      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71",
+
+    ]
+    androidSupportDependencies = [
+            appcompat             : "androidx.appcompat:appcompat:$appcompat_version",
+            constrainlayout       : "androidx.constraintlayout:constraintlayout:$constraint_version",
+            recycleview           : "androidx.recyclerview:recyclerview:$appcompat_version",
+            archPaging            : "android.arch.paging:runtime:$paging_version",
+            supportDesign         : 'com.google.android.material:material:1.0.0',
+            extention            : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
+            runtime              : 'androidx.lifecycle:lifecycle-runtime:2.2.0',
+            viewmodel            : 'androidx.lifecycle:lifecycle-viewmodel:2.2.0',
+    ]
+    coroutineDependencies = [
+            kotlinCrtCore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version",
+            kotlinCrtAndroid      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    ]
+    koinDependencies = [
+            koin                  : "org.koin:koin-android:$koin_version",
+            koinVM                : "org.koin:koin-androidx-viewmodel:$koin_version"
+    ]
+    okHttpDependencies = [
+            okhttp                : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            okhttp3logging        : "com.squareup.okhttp3:logging-interceptor:4.2.0",
+
+    ]
+    retrofitDependencies = [
+            retrofit              : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitConverterGson : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            retrofit2adapter     : "com.squareup.retrofit2:adapter-rxjava2:2.6.2",
+
+    ]
+    glideDependencies = [
+            glide                 : "com.github.bumptech.glide:glide:$glide_version"
+    ]
+    testDependencies = [
+            junit                 : "junit:junit:4.13"
+    ]
+    testImplementationDependencies = [
+            junit                 : "androidx.test.ext:junit:1.1.2",
+            expresso              : "androidx.test.espresso:espresso-core:3.3.0"
+    ]
+    ganderDebugDependencies = [
+            ganderDebug           : "com.ashokvarma.android:gander-imdb:$gander_version",
+    ]
+    ganderReleaseDependencies = [
+            ganderRelease         : "com.ashokvarma.android:gander-no-op:$gander_version",
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

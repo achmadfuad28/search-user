@@ -29,7 +29,6 @@ class MainActivity : BaseActivity(),
     override lateinit var itemAdapter: ItemAdapter
     override var itemLayoutManager: LinearLayoutManager = LinearLayoutManager(this)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.toolbar.let {
@@ -66,11 +65,7 @@ class MainActivity : BaseActivity(),
 
     override var oneEditorActionListener = TextView.OnEditorActionListener { _, actionId, _ ->
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-            if(viewModel.userList == null) {
-                observeData(viewModel.bTextSearch.get().toString())
-            } else {
-                viewModel.searchByKeyword(viewModel.bTextSearch.get().toString())
-            }
+            doSearch()
             return@OnEditorActionListener true
         }
         return@OnEditorActionListener false
@@ -78,6 +73,10 @@ class MainActivity : BaseActivity(),
 
 
     override fun onClickSearch(view: View) {
+        doSearch()
+    }
+
+    private fun doSearch() {
         if(viewModel.userList == null) {
             observeData(viewModel.bTextSearch.get().toString())
         } else {
@@ -120,8 +119,6 @@ class MainActivity : BaseActivity(),
                 networkState?.let { state ->
                     itemAdapter.setNetworkState(state)
                     when (state) {
-                        NetworkState.LOADING -> {
-                        }
                         NetworkState.LOADED -> {
                             binding.swipeRefresh.isRefreshing = false
                         }

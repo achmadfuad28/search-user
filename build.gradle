@@ -39,8 +39,7 @@ ext {
     kotlinDependencies = [
             kotlin                : "androidx.core:core-ktx:$ktx_version",
             kotlinStdLib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            kotlinStdLibJre8      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71",
-
+            kotlinStdLibJre8      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71"
     ]
     androidSupportDependencies = [
             appcompat             : "androidx.appcompat:appcompat:$appcompat_version",
@@ -50,7 +49,7 @@ ext {
             supportDesign         : 'com.google.android.material:material:1.0.0',
             extention            : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
             runtime              : 'androidx.lifecycle:lifecycle-runtime:2.2.0',
-            viewmodel            : 'androidx.lifecycle:lifecycle-viewmodel:2.2.0',
+            viewmodel            : 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
     ]
     coroutineDependencies = [
             kotlinCrtCore         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version",
@@ -62,8 +61,7 @@ ext {
     ]
     okHttpDependencies = [
             okhttp                : "com.squareup.okhttp3:okhttp:$okhttp_version",
-            okhttp3logging        : "com.squareup.okhttp3:logging-interceptor:4.2.0",
-
+            okhttp3logging        : "com.squareup.okhttp3:logging-interceptor:4.2.0"
     ]
     retrofitDependencies = [
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofit_version",
@@ -82,10 +80,10 @@ ext {
             expresso              : "androidx.test.espresso:espresso-core:3.3.0"
     ]
     ganderDebugDependencies = [
-            ganderDebug           : "com.ashokvarma.android:gander-imdb:$gander_version",
+            ganderDebug           : "com.ashokvarma.android:gander-imdb:$gander_version"
     ]
     ganderReleaseDependencies = [
-            ganderRelease         : "com.ashokvarma.android:gander-no-op:$gander_version",
+            ganderRelease         : "com.ashokvarma.android:gander-no-op:$gander_version"
     ]
 }
 

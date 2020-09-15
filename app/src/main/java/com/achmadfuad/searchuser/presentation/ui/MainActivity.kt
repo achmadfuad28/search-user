@@ -13,6 +13,7 @@ import com.achmadfuad.searchuser.framework.common.NetworkState
 import com.achmadfuad.searchuser.framework.owner.ViewDataBindingOwner
 import com.achmadfuad.searchuser.framework.owner.ViewModelOwner
 import com.achmadfuad.searchuser.presentation.adapter.ItemAdapter
+import com.achmadfuad.searchuser.presentation.utils.ViewUtils
 import com.achmadfuad.searchuser.presentation.view.MainView
 import com.achmadfuad.searchuser.presentation.viewmodel.MainViewModel
 import com.achmadfuad.searchuser.presentation.widget.LoadingView
@@ -63,8 +64,9 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    override var oneEditorActionListener = TextView.OnEditorActionListener { _, actionId, _ ->
+    override var oneEditorActionListener = TextView.OnEditorActionListener { textView, actionId, _ ->
         if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            ViewUtils.hideKeyboard(this, textView)
             doSearch()
             return@OnEditorActionListener true
         }
@@ -73,6 +75,7 @@ class MainActivity : BaseActivity(),
 
 
     override fun onClickSearch(view: View) {
+        ViewUtils.hideKeyboard(this, view)
         doSearch()
     }
 
@@ -118,7 +121,9 @@ class MainActivity : BaseActivity(),
             observeData(viewModel.getNetworkState()) { networkState ->
                 networkState?.let { state ->
                     itemAdapter.setNetworkState(state)
+
                     when (state) {
+                        NetworkState.LOADING,
                         NetworkState.LOADED -> {
                             binding.swipeRefresh.isRefreshing = false
                         }

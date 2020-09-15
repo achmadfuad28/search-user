@@ -17,10 +17,35 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile rootProject.file('release.keystore')
+            keyAlias 'releaseKeystore'
+            keyPassword 'Password123'
+            storePassword 'Password123'
+        }
+    }
+    buildTypes {
+        debug {
             minifyEnabled false
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix '-dev'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "search-user-github-${variant.versionName}(${variant.versionCode}).apk"
+                }
+            }
+            signingConfig signingConfigs.release
         }
     }
 
